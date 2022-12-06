@@ -1,0 +1,231 @@
+:root {
+	--primary: #EA40A4;
+	--trabalho: #3A82EE;
+	--pessoal: var(--primary);
+	--light: #EEE;
+	--grey: #888;
+	--dark: #313154;
+	--danger: #ff5b57;
+
+	--shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+	--trabalho-glow: 0px 0px 4px rgba(58, 130, 238, 0.75);
+	--pessoal-glow: 0px 0px 4px rgba(234, 64, 164, 0.75);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'montserrat', sans-serif;
+}
+
+input:not([type="radio"]):not([type="checkbox"]), button {
+	appearance: none;
+	border: none;
+	outline: none;
+	background: none;
+	cursor: initial;
+}
+
+body {
+	background: var(--light);
+	color: var(--dark);
+}
+
+section {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	padding-left: 1.5rem;
+	padding-right: 1.5em;
+}
+
+h3 {
+	color: var(--dark);
+	font-size: 1rem;
+	font-weight: 400;
+	margin-bottom: 0.5rem;
+}
+
+h4 {
+	color: var(--grey);
+	font-size: 0.875rem;
+	font-weight: 700;
+	margin-bottom: 0.5rem;
+}
+
+.saudacoes .titulo {
+	display: flex;
+}
+
+.saudacoes .titulo input {
+	margin-left: 0.5rem;
+	flex: 1 1 0%;
+	min-width: 0;
+}
+
+.saudacoes .titulo,
+.saudacoes .titulo input {
+	color: var(--dark);
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+
+.criar-tarefa input[type="text"] {
+	display: block;
+	width: 100%;
+	font-size: 1.125rem;
+	padding: 1rem 1.5rem;
+	color: var(--dark);
+	background-color: #FFF;
+	border-radius: 0.5rem;
+	box-shadow: var(--shadow);
+	margin-bottom: 1.5rem;
+}
+
+.criar-tarefa .opcoes {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+.criar-tarefa .opcoes label {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 1.5rem;
+	background-color: #FFF;
+	border-radius: 0.5rem;
+	box-shadow: var(--shadow);
+	cursor: pointer;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+	display: none;
+}
+
+.bubble {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	border: 2px solid var(--trabalho);
+	box-shadow: var(--trabalho-glow);
+}
+
+.bubble.pessoal {
+	border-color: var(--pessoal);
+	box-shadow: var(--pessoal-glow);
+}
+
+.bubble::after {
+	content: "";
+	display: block;
+	opacity: 0;
+	width: 0px;
+	height: 0px;
+	background-color: var(--trabalho);
+	box-shadow: var(--trabalho-glow);
+	border-radius: 50%;
+	transition: 0.2s ease-in-out;
+}
+
+.bubble.pessoal::after {
+	background-color: var(--pessoal);
+	box-shadow: var(--pessoal-glow);
+}
+
+input:checked ~ .bubble::after {
+	width: 10px;
+	height: 10px;
+	opacity: 1;
+}
+
+.criar-tarefa .opcoes label div {
+	color: var(--dark);
+	font-size: 1.125rem;
+	margin-top: 1rem;
+}
+
+.criar-tarefa input[type="submit"] {
+	display: block;
+	width: 100%;
+	font-size: 1.125rem;
+	padding: 1rem 1.5rem;
+	color: #FFF;
+	background-color: var(--primary);
+	border-radius: 0.5rem;
+	box-shadow: var(--pessoal-glow);
+	cursor: pointer;
+	transition: 0.2s ease-in-out;
+}
+
+.criar-tarefa input[type="submit"]:hover {
+	opacity: 0.75;
+}
+
+.listaDeTarefas-listar .listar {
+	margin: 1rem 0;
+} 
+
+.listaDeTarefas-listar .listaDeTarefas-item {
+	display: flex;
+	align-items: center;
+	background-color: #FFF;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	box-shadow: var(--shadow);
+	margin-bottom: 1rem;
+}
+
+.listaDeTarefas-item label {
+	display: block;
+	margin-right: 1rem;
+	cursor: pointer;
+}
+
+.listaDeTarefas-item .listaDeTarefas-content {
+	flex: 1 1 0%;
+}
+
+.listaDeTarefas-item .listaDeTarefas-content input {
+	color: var(--dark);
+	font-size: 1.125rem;
+}
+
+.listaDeTarefas-item .acoes {
+	display: flex;
+	align-items: center;
+}
+
+.listaDeTarefas-item .acoes button {
+	display: block;
+	padding: 0.5rem;
+	border-radius: 0.25rem;
+	color: #FFF;
+	cursor: pointer;
+	transition: 0.2s ease-in-out;
+}
+
+.listaDeTarefas-item .acoes button:hover {
+	opacity: 0.75;
+}
+
+.listaDeTarefas-item .acoes .edit {
+	margin-right: 0.5rem;
+	background-color: var(--primary);
+}
+
+.listaDeTarefas-item .acoes .deletar {
+	background-color: var(--danger);
+}
+
+.listaDeTarefas-item.done .listaDeTarefas-content input {
+	text-decoration: line-through;
+	color: var(--grey);
+}
